@@ -4,7 +4,10 @@ charset-normalizer==3.4.4
 click==8.3.1
 dash==3.3.0
 dash-bootstrap-components==2.0.4
+dash_daq==0.6.0
+dotenv==0.9.9
 Flask==3.1.2
+gunicorn==23.0.0
 idna==3.11
 importlib_metadata==8.7.0
 itsdangerous==2.2.0
@@ -14,6 +17,7 @@ narwhals==2.13.0
 nest-asyncio==1.6.0
 packaging==25.0
 plotly==6.5.0
+python-dotenv==1.2.1
 requests==2.32.5
 retrying==1.4.2
 setuptools==80.9.0

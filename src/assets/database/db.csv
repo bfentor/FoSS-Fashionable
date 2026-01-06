@@ -1,0 +1,66 @@
+name,type,min,max,color,precipitation,gender
+Skirt,bottom,-10,30,Blue,True,female
+T-shirt,top,-5,30,White,True,unisex
+Tank top,top,10,30,Pink,False,female
+Crop top,top,10,30,Yellow,True,female
+Blouse,top,0,30,Brown,True,female
+Button-up shirt,top,-5,30,Black,True,unisex
+Sweater,top,-10,10,Navyblue,True,unisex
+Cardigan,top,-5,20,Beige,True,unisex
+Hoodie,top,-10,10,Blue,True,unisex
+Sweatshirt,top,-10,10,Orange,True,unisex
+Blazer,jacket,-10,20,Black,True,unisex
+Leather jacket,jacket,-20,10,Mauve,True,unisex
+Denim jacket,jacket,-10,20,Blue,True,unisex
+Trench coat,jacket,-10,20,Black,True,unisex
+Puffer jacket,jacket,-20,20,White,True,unisex
+Parka,jacket,-10,10,Brown,True,unisex
+Jeans,bottom,-10,30,Blue,True,unisex
+Skinny jeans,bottom,-10,30,Blue,True,unisex
+Wide-leg pants,bottom,-20,30,Black,True,unisex
+Cargo pants,bottom,-20,30,Green,True,unisex
+Leggings,bottom,-10,20,Skin,True,female
+Sweatpants,bottom,-10,20,Blue,True,unisex
+Shorts,bottom,10,30,Orange,True,male
+Bermuda shorts,bottom,10,30,Blue,True,male
+Mini skirt,bottom,0,30,Brown,True,female
+Thermal tights,bottom,-20,0,Brown,True,female
+Midi skirt,bottom,0,30,Orange,True,female
+Maxi skirt,bottom,0,30,Red,True,female
+Dress,top,-20,30,White,True,female
+Maxi dress,top,-20,30,White,True,female
+Sundress,top,10,30,Orange,True,female
+Bodycon dress,top,0,30,Black,True,female
+Wrap dress,top,10,30,Yellow,True,female
+Slip dress,top,10,30,Green,True,female
+Jumpsuit,bottom,0,30,Black,True,unisex
+Romper,bottom,10,30,Blue,True,female
+Overalls,bottom,-10,20,Beige,True,unisex
+Tracksuit,top,0,30,Red,True,unisex
+Nightgown,top,10,30,Pink,True,female
+Robe,top,0,30,White,True,unisex
+Socks,footwear,-20,20,Brown,True,unisex
+Tights,bottom,-20,20,Black,True,female
+Stockings,bottom,-20,30,Brown,True,female
+Poncho,top,10,30,Orange,True,unisex
+Scarf,top,-20,20,Red,True,unisex
+Beanie,bottom,-20,10,Brown,True,unisex
+Hat,headwear,-20,30,Beige,True,unisex
+Waistcoat,top,-20,20,Blue,True,unisex
+Kimono,top,10,30,Pink,True,unisex
+Corset,top,-20,30,Black,True,female
+Culottes,bottom,10,30,Black,True,female
+Capri pants,bottom,10,30,White,True,unisex
+Harem pants,bottom,10,30,Blue,True,unisex
+Shawl,headwear,-20,10,Brown,True,unisex
+Off-Shoulder Dress,top,10,30,Red,True,female
+Sneakers,footwear,5,30,White,False,unisex
+Leather Boots,footwear,-10,15,Black,True,male
+Ballet Flats,footwear,10,25,Pink,False,female
+Sandals,footwear,18,40,Tan,False,female
+Running Shoes,footwear,5,25,Blue,True,male
+Winter Boots,footwear,-30,0,Dark Brown,True,unisex
+Rain Boots,footwear,0,20,Yellow,True,unisex
+High Heels,footwear,15,30,Red,False,female
+Hiking Boots,footwear,-5,20,Green,True,male
+Loafers,footwear,10,25,Brown,False,unisex

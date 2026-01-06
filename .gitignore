@@ -3,3 +3,6 @@ env
 .env
 *.pyc
 images backup
+convertcsv.py
+fashionista.py
+db_backup.csv

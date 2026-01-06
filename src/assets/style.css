@@ -66,9 +66,13 @@ html {
 }
 
 #temperature {
-    font-size: 100px;
-    padding-left: 40px;
+    font-size: 90px;
+    /* padding-left: 40px; */
     /* padding-bottom: 100px; */
+}
+
+#gender {
+    width: 50%;
 }
 
 #location {

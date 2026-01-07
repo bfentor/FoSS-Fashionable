@@ -121,7 +121,7 @@ def main():
         dbc.Row([
             dbc.Col([
                 card,
-                dcc.Dropdown(["Unisex", "Female", "Male"], "Unisex", clearable=False, id="gender", placeholder="Gender"),
+                dcc.Dropdown(["Unisex", "Female", "Male"], "Unisex", clearable=False, id="gender", placeholder="Gender", persistence=True, persistence_type="local"),
         ], width=4),
             dbc.Col([
                 dbc.Row([cardHead]),

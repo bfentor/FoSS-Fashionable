@@ -1,5 +1,5 @@
 html {
-    width: 1200px;
+    width: 800px;
     margin: auto;
     padding: 20px;
 }
@@ -59,10 +59,19 @@ html {
     padding: 15px;
 }
 
+.fit-row {
+    justify-content: center;
+}
+
 #weather-image {
     padding: 80px;
     padding-bottom: 0px;
     padding-top: 20px;
+}
+
+#weather-card {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-body {
@@ -82,6 +91,12 @@ html {
 #gender {
     padding-left: 20%;
     padding-right: 20%;
+}
+
+.button-row {
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
 }
 
 #prec-chance {

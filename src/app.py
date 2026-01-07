@@ -52,12 +52,12 @@ def main():
             dbc.CardBody(
                 [
                     html.H1("_", id="temperature", className="card-title"),
-                    html.H5("__________", id="prec-chance", className="weather"),
+                    html.H5("This app requires location services to be enabled", id="prec-chance", className="weather"),
                     html.H2("______________", id="text", className="weather"),
                     html.H5("____, ____", id="location", className="weather"),
                 ]
             ),
-        ],style={"width": "20rem"})
+        ],style={"width": "20rem"}, id="weather-card")
 
     cardHead = dbc.Card(
             [
@@ -122,19 +122,31 @@ def main():
             dbc.Col([
                 card,
                 dcc.Dropdown(["Unisex", "Female", "Male"], "Unisex", clearable=False, id="gender", placeholder="Gender", persistence=True, persistence_type="local"),
-        ], width=4),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Button("Refresh Location", id="location-perm-btn")
+                    ], className="button-row"),
+                    dbc.Col([
+                        dbc.Button("Refresh Outfit", id="outfit-refresh-btn")
+                    ], className="button-row")
+                ], className="button-row")
+        ]),
             dbc.Col([
-                dbc.Row([cardHead]),
-                dbc.Row([cardShirt, cardJacket]),
-                dbc.Row([cardPants]),
-                dbc.Row([cardShoes]),
-                # dbc.Row([cardHat, cardJacket, cardShirt, cardPants, cardShoes])
-            ], width=8),
+                dbc.Row([cardHead], className="fit-row"),
+                dbc.Row([cardShirt], className="fit-row"),
+                dbc.Row([cardJacket], className="fit-row"),
+                dbc.Row([cardPants], className="fit-row"),
+                dbc.Row([cardShoes], className="fit-row"),
+            ]),
         ]),
         dcc.Geolocation(id="geolocation"),
         dcc.Store(id="weatherapi-data", storage_type="session", data="dict"),
         dcc.Store(id="fit-store", storage_type="session", data="dict"),
     ])
+
+    @callback(Output("geolocation", "update_now"), Input("location-perm-btn", "n_clicks"))
+    def update_now(click):
+        return True if click and click > 0 else False
 
     @callback(
         Output("weatherapi-data", "data"),
@@ -173,9 +185,12 @@ def main():
             
             rain = store['forecast']["forecastday"][0]["day"]["daily_chance_of_rain"]
             snow = store['forecast']["forecastday"][0]["day"]["daily_chance_of_snow"]
-            chance = f"Chance of snow: {snow}%"
-            if rain > snow:
-                chance = f"Chance of rain: {rain}%"
+            chance = ""
+            if (rain + snow) > 0:
+                if rain > snow:
+                    chance = f"Chance of rain: {rain}%"
+                else:
+                    chance = f"Chance of snow: {snow}%"
 
             return f"{town}, {country}", f"{round(temp)}°", chance, path, text
             
@@ -201,9 +216,10 @@ def main():
     # Who am I to argue
     @callback(
         Output("fit-store", "data"),
-        Input("weatherapi-data", "data")
+        Input("weatherapi-data", "data"),
+        Input("outfit-refresh-btn", "n_clicks")
     )
-    def get_fit(wdata):
+    def get_fit(wdata, n_clicks):
         if wdata:
             temp = wdata["current"]["feelslike_c"]
             rain = wdata['forecast']["forecastday"][0]["day"]["daily_will_it_rain"]

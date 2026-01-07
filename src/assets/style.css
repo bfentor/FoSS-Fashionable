@@ -115,3 +115,9 @@ html {
 .daq-toggleswitch--light__indicator--on {
     visibility: hidden;
 }
+
+@media (max-width: 500px) {
+    html {
+        width: 400px;
+    }
+}

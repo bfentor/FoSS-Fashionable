@@ -30,6 +30,8 @@ def main():
         ],
         brand="Fashionable",
         # brand_href="#",
+        expand=False,
+        sticky="top",
         color="primary",
         dark=True,
     )

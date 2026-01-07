@@ -7,6 +7,10 @@ import os
 import weatherapi
 from weatherapi.rest import ApiException
 from src.fashionista import get_callback
+import pandas as pd
+# import requests
+# from PIL import Image
+# from dash_dynamic_images import image_callback
 
 load_dotenv()
 
@@ -19,13 +23,10 @@ def main():
     app = Dash(__name__, use_pages=False, external_stylesheets=[dbc.themes.MINTY, dbc.icons.BOOTSTRAP])
     app.title = "Fashionable"
 
-    weather = "partly-cloudy"
-    source = f"/assets/images/{weather}.png"
-
     navbar = dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("Settings", href="/settings")),
-            dbc.NavItem(dbc.NavLink("About", href="/about")),
+            # dbc.NavItem(dbc.NavLink("Settings", href="/settings")),
+            # dbc.NavItem(dbc.NavLink("About", href="/about")),
         ],
         brand="Fashionable",
         # brand_href="#",
@@ -47,11 +48,13 @@ def main():
                         )
                     ], className="card-header",
                 ),
-            dbc.CardImg(src=source, top=True, id="weather-image"),
+            dbc.CardImg(src=f"assets/images/weather/day/119.png", top=True, id="weather-image"),
             dbc.CardBody(
                 [
-                    html.H1("0°", id="temperature", className="card-title"),
-                    html.H5("..., ...", id="location")
+                    html.H1("_", id="temperature", className="card-title"),
+                    html.H5("__________", id="prec-chance", className="weather"),
+                    html.H2("______________", id="text", className="weather"),
+                    html.H5("____, ____", id="location", className="weather"),
                 ]
             ),
         ],style={"width": "20rem"})
@@ -63,7 +66,7 @@ def main():
                         dbc.CardImg(src="/assets/images/head.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("Brown Flatcap", id="head"),
+                        html.H5("", id="head"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -74,7 +77,7 @@ def main():
                         dbc.CardImg(src="/assets/images/jacket.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("Navy Blue Overcoat", id="jacket"),
+                        html.H5("", id="jacket"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -85,7 +88,7 @@ def main():
                         dbc.CardImg(src="/assets/images/shirt.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("White Dress Shirt", id="shirt"),
+                        html.H5("", id="shirt"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -96,7 +99,7 @@ def main():
                         dbc.CardImg(src="/assets/images/pants.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("Dark Blue Dress Pants", id="pants"),
+                        html.H5("", id="pants"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -107,7 +110,7 @@ def main():
                         dbc.CardImg(src="/assets/images/shoes.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("Dark Brown Oxford Shoes", id="shoes"),
+                        html.H5("", id="shoes"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -140,24 +143,43 @@ def main():
     def populate_data(pos):
         if pos:
             q = f"{pos['lat']},{pos['lon']}"
-            return api_instance.realtime_weather(q)
+            # return {"real_time": api_instance.realtime_weather(q), "forecast": api_instance.forecast_weather(q, 1)}
+            return api_instance.forecast_weather(q, 1)
         return no_update
 
     @callback(
         Output("location", "children"),
         Output("temperature", "children"),
+        Output("prec-chance", "children"),
+        Output("weather-image", "src"),
+        Output("text", "children"),
         Input("temp-format", "value"),
         Input("weatherapi-data", "data"),
         prevent_initial_callback=True,
     )
     def display_data(format, store):
         if store:
+            # print(store)
             town = store['location']['name']
             country = store['location']['country']
             temp_string = "temp_f" if format else "temp_c"
             temp = store['current'][temp_string]
-            return f"{town}, {country}", f"{round(temp)}°"
-        return no_update, no_update
+            img = store['current']['condition']['icon']
+            
+            text = store['current']['condition']['text']
+
+            path = f"/assets/images/weather/{img[len(img)-11:]}"
+            # print(f"PATH: {path}")
+            
+            rain = store['forecast']["forecastday"][0]["day"]["daily_chance_of_rain"]
+            snow = store['forecast']["forecastday"][0]["day"]["daily_chance_of_snow"]
+            chance = f"Chance of snow: {snow}%"
+            if rain > snow:
+                chance = f"Chance of rain: {rain}%"
+
+            return f"{town}, {country}", f"{round(temp)}°", chance, path, text
+            
+        return no_update, no_update, no_update, no_update, no_update
 
     @callback(
         Output("head", "children"),
@@ -183,29 +205,47 @@ def main():
     )
     def get_fit(wdata):
         if wdata:
+            temp = wdata["current"]["feelslike_c"]
+            rain = wdata['forecast']["forecastday"][0]["day"]["daily_will_it_rain"]
+            snow = wdata['forecast']["forecastday"][0]["day"]["daily_will_it_snow"]
+
+            # filter out clothes based on precipitation
+
+            data = pd.read_csv("src/assets/database/db.csv")
+            
+            if rain + snow > 1:
+                data = data[data["precipitation"] == True]
+            
+            data = data[(data["max"] > temp) & (data["min"] < temp)]
+
+            mdata = data[(data["gender"] == "male") | (data["gender"] == "unisex")]
+            fdata = data[(data["gender"] == "female") | (data["gender"] == "unisex")]
+            
+            # There is definetly a nice way to generalize this but I haven't the time for such niceties at the moment
             return {
                 "Male": {
-                    "head": "Male", 
-                    "shirt":"Dark Blue T-Shirt", 
-                    "jacket": "White Suit", 
-                    "pants": "Grey Jeans", 
-                    "shoes": "Black Boots"
+                    "head": mdata[mdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+                    "shirt": mdata[mdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
+                    "jacket": mdata[mdata["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "pants": mdata[mdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+                    "shoes": mdata[mdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 },
                 "Female": {
-                    "head": "Female", 
-                    "shirt":"Dark Blue T-Shirt", 
-                    "jacket": "White Suit", 
-                    "pants": "Grey Jeans", 
-                    "shoes": "Black Boots"
+                    "head": fdata[fdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+                    "shirt": fdata[fdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
+                    "jacket": fdata[fdata["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "pants": fdata[fdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+                    "shoes": fdata[fdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 },
                 "Unisex": {
-                    "head": "Unisex", 
-                    "shirt":"Dark Blue T-Shirt", 
-                    "jacket": "White Suit", 
-                    "pants": "Grey Jeans", 
-                    "shoes": "Black Boots"
+                    "head": data[data["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+                    "shirt": data[data["type"] == "top"].sample(n=1)["name"].squeeze(), 
+                    "jacket": data[data["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "pants": data[data["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+                    "shoes": data[data["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 }
             }
+                    
         return no_update
     
     return app.server

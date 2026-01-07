@@ -60,9 +60,13 @@ html {
 }
 
 #weather-image {
-    padding: 100px;
-    padding-bottom: 20px;
+    padding: 80px;
+    padding-bottom: 0px;
     padding-top: 20px;
+}
+
+.card-body {
+    padding-top: 0px;
 }
 
 #temperature {
@@ -71,13 +75,23 @@ html {
     /* padding-bottom: 100px; */
 }
 
-#gender {
-    width: 50%;
-}
-
-#location {
+.weather {
     text-align: center;
 }
+
+#gender {
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+#prec-chance {
+    font-size: 14px;
+    /* text-align: center; */
+}
+
+/* #location {
+    text-align: center;
+} */
 
 .daq-toggleswitch--light__indicator--off {
     visibility: hidden;

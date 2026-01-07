@@ -1,66 +1,144 @@
 name,type,min,max,color,precipitation,gender
-Skirt,bottom,-10,30,Blue,True,female
-T-shirt,top,-5,30,White,True,unisex
-Tank top,top,10,30,Pink,False,female
-Crop top,top,10,30,Yellow,True,female
-Blouse,top,0,30,Brown,True,female
-Button-up shirt,top,-5,30,Black,True,unisex
-Sweater,top,-10,10,Navyblue,True,unisex
-Cardigan,top,-5,20,Beige,True,unisex
-Hoodie,top,-10,10,Blue,True,unisex
-Sweatshirt,top,-10,10,Orange,True,unisex
-Blazer,jacket,-10,20,Black,True,unisex
-Leather jacket,jacket,-20,10,Mauve,True,unisex
-Denim jacket,jacket,-10,20,Blue,True,unisex
-Trench coat,jacket,-10,20,Black,True,unisex
-Puffer jacket,jacket,-20,20,White,True,unisex
-Parka,jacket,-10,10,Brown,True,unisex
-Jeans,bottom,-10,30,Blue,True,unisex
-Skinny jeans,bottom,-10,30,Blue,True,unisex
-Wide-leg pants,bottom,-20,30,Black,True,unisex
-Cargo pants,bottom,-20,30,Green,True,unisex
-Leggings,bottom,-10,20,Skin,True,female
-Sweatpants,bottom,-10,20,Blue,True,unisex
-Shorts,bottom,10,30,Orange,True,male
-Bermuda shorts,bottom,10,30,Blue,True,male
-Mini skirt,bottom,0,30,Brown,True,female
-Thermal tights,bottom,-20,0,Brown,True,female
-Midi skirt,bottom,0,30,Orange,True,female
-Maxi skirt,bottom,0,30,Red,True,female
-Dress,top,-20,30,White,True,female
-Maxi dress,top,-20,30,White,True,female
-Sundress,top,10,30,Orange,True,female
-Bodycon dress,top,0,30,Black,True,female
-Wrap dress,top,10,30,Yellow,True,female
-Slip dress,top,10,30,Green,True,female
-Jumpsuit,bottom,0,30,Black,True,unisex
-Romper,bottom,10,30,Blue,True,female
-Overalls,bottom,-10,20,Beige,True,unisex
-Tracksuit,top,0,30,Red,True,unisex
-Nightgown,top,10,30,Pink,True,female
-Robe,top,0,30,White,True,unisex
-Socks,footwear,-20,20,Brown,True,unisex
-Tights,bottom,-20,20,Black,True,female
-Stockings,bottom,-20,30,Brown,True,female
-Poncho,top,10,30,Orange,True,unisex
-Scarf,top,-20,20,Red,True,unisex
-Beanie,bottom,-20,10,Brown,True,unisex
-Hat,headwear,-20,30,Beige,True,unisex
-Waistcoat,top,-20,20,Blue,True,unisex
-Kimono,top,10,30,Pink,True,unisex
-Corset,top,-20,30,Black,True,female
-Culottes,bottom,10,30,Black,True,female
-Capri pants,bottom,10,30,White,True,unisex
-Harem pants,bottom,10,30,Blue,True,unisex
-Shawl,headwear,-20,10,Brown,True,unisex
-Off-Shoulder Dress,top,10,30,Red,True,female
-Sneakers,footwear,5,30,White,False,unisex
-Leather Boots,footwear,-10,15,Black,True,male
-Ballet Flats,footwear,10,25,Pink,False,female
-Sandals,footwear,18,40,Tan,False,female
-Running Shoes,footwear,5,25,Blue,True,male
-Winter Boots,footwear,-30,0,Dark Brown,True,unisex
-Rain Boots,footwear,0,20,Yellow,True,unisex
-High Heels,footwear,15,30,Red,False,female
-Hiking Boots,footwear,-5,20,Green,True,male
-Loafers,footwear,10,25,Brown,False,unisex
+Skirt,bottom,-10,30,Blue,TRUE,female
+T-shirt,top,-5,30,White,TRUE,unisex
+Tank top,top,10,30,Pink,FALSE,female
+Crop top,top,10,30,Yellow,TRUE,female
+Blouse,top,0,30,Brown,TRUE,female
+Button-up shirt,top,-5,30,Black,TRUE,unisex
+Sweater,top,-10,10,Navyblue,TRUE,unisex
+Cardigan,top,-5,20,Beige,TRUE,unisex
+Hoodie,top,-10,10,Blue,TRUE,unisex
+Sweatshirt,top,-10,10,Orange,TRUE,unisex
+Blazer,jacket,-10,20,Black,TRUE,unisex
+Leather jacket,jacket,-20,10,Mauve,TRUE,unisex
+Denim jacket,jacket,-10,20,Blue,TRUE,unisex
+Trench coat,jacket,-10,20,Black,TRUE,unisex
+Puffer jacket,jacket,-20,20,White,TRUE,unisex
+Parka,jacket,-10,10,Brown,TRUE,unisex
+Jeans,bottom,-10,30,Blue,TRUE,unisex
+Skinny jeans,bottom,-10,30,Blue,TRUE,unisex
+Wide-leg pants,bottom,-20,30,Black,TRUE,unisex
+Cargo pants,bottom,-20,30,Green,TRUE,unisex
+Leggings,bottom,-10,20,Skin,TRUE,female
+Sweatpants,bottom,-10,20,Blue,TRUE,unisex
+Shorts,bottom,10,30,Orange,TRUE,male
+Bermuda shorts,bottom,10,30,Blue,TRUE,male
+Mini skirt,bottom,0,30,Brown,TRUE,female
+Thermal tights,bottom,-20,0,Brown,TRUE,female
+Midi skirt,bottom,0,30,Orange,TRUE,female
+Maxi skirt,bottom,0,30,Red,TRUE,female
+Dress,top,-20,30,White,TRUE,female
+Maxi dress,top,-20,30,White,TRUE,female
+Sundress,top,10,30,Orange,TRUE,female
+Bodycon dress,top,0,30,Black,TRUE,female
+Wrap dress,top,10,30,Yellow,TRUE,female
+Slip dress,top,10,30,Green,TRUE,female
+Jumpsuit,bottom,0,30,Black,TRUE,unisex
+Romper,bottom,10,30,Blue,TRUE,female
+Overalls,bottom,-10,20,Beige,TRUE,unisex
+Tracksuit,top,0,30,Red,TRUE,unisex
+Nightgown,top,10,30,Pink,TRUE,female
+Robe,top,0,30,White,TRUE,unisex
+Tights,bottom,-20,20,Black,TRUE,female
+Stockings,bottom,-20,30,Brown,TRUE,female
+Poncho,top,10,30,Orange,TRUE,unisex
+Scarf,top,-20,20,Red,TRUE,unisex
+Beanie,bottom,-20,10,Brown,TRUE,unisex
+Hat,headwear,-20,30,Beige,TRUE,unisex
+Waistcoat,top,-20,20,Blue,TRUE,unisex
+Kimono,top,10,30,Pink,TRUE,unisex
+Corset,top,-20,30,Black,TRUE,female
+Culottes,bottom,10,30,Black,TRUE,female
+Capri pants,bottom,10,30,White,TRUE,unisex
+Harem pants,bottom,10,30,Blue,TRUE,unisex
+Shawl,headwear,-20,10,Brown,TRUE,unisex
+Off-Shoulder Dress,top,10,30,Red,TRUE,female
+Sneakers,footwear,5,30,White,FALSE,unisex
+Leather Boots,footwear,-10,15,Black,TRUE,male
+Ballet Flats,footwear,10,25,Pink,FALSE,female
+Sandals,footwear,18,40,Tan,FALSE,female
+Running Shoes,footwear,5,25,Blue,TRUE,male
+Winter Boots,footwear,-30,0,Dark Brown,TRUE,unisex
+Rain Boots,footwear,0,20,Yellow,TRUE,unisex
+High Heels,footwear,15,30,Red,FALSE,female
+Hiking Boots,footwear,-5,20,Green,TRUE,male
+Loafers,footwear,10,25,Brown,FALSE,unisex
+Long-sleeve T-shirt,top,-5,20,Grey,TRUE,unisex
+Thermal shirt,top,-20,5,White,TRUE,unisex
+Wool sweater,top,-20,10,Cream,TRUE,unisex
+Knit sweater,top,-10,15,Green,TRUE,unisex
+Oversized hoodie,top,-15,10,Grey,TRUE,unisex
+Zip-up hoodie,top,-10,15,Black,TRUE,unisex
+Fleece jacket,jacket,-15,10,Navy,TRUE,unisex
+Softshell jacket,jacket,-10,15,Grey,TRUE,unisex
+Quilted jacket,jacket,-10,15,Olive,TRUE,unisex
+Winter coat,jacket,-25,5,Black,TRUE,unisex
+Wool coat,jacket,-15,10,Camel,TRUE,unisex
+Rain jacket,jacket,0,20,Yellow,TRUE,unisex
+Anorak,jacket,-5,15,Green,TRUE,unisex
+Insulated vest,jacket,-10,15,Navy,TRUE,unisex
+Corduroy pants,bottom,-10,20,Brown,TRUE,unisex
+Wool trousers,bottom,-15,10,Grey,TRUE,unisex
+Tailored pants,bottom,0,25,Black,TRUE,unisex
+Straight-leg jeans,bottom,-10,30,Dark Blue,TRUE,unisex
+Black jeans,bottom,-10,30,Black,TRUE,unisex
+Lined leggings,bottom,-15,10,Black,TRUE,female
+Pleated skirt,bottom,0,25,Grey,TRUE,female
+Wool skirt,bottom,-10,15,Brown,TRUE,female
+A-line skirt,bottom,0,30,Beige,TRUE,female
+Padded trousers,bottom,-20,5,Navy,TRUE,unisex
+Thermal pants,bottom,-25,0,Grey,TRUE,unisex
+Chinos,bottom,0,25,Khaki,TRUE,unisex
+High-waisted pants,bottom,0,30,Black,TRUE,female
+Beanie hat,headwear,-25,5,Grey,TRUE,unisex
+Wool hat,headwear,-20,10,Black,TRUE,unisex
+Bucket hat,headwear,0,20,Beige,TRUE,unisex
+Ear muffs,headwear,-20,5,White,TRUE,unisex
+Scarf wrap,headwear,-20,10,Cream,TRUE,unisex
+Chunky scarf,headwear,-25,5,Red,TRUE,unisex
+Chelsea boots,footwear,-5,15,Brown,TRUE,unisex
+Ankle boots,footwear,0,20,Black,TRUE,female
+Combat boots,footwear,-10,15,Black,TRUE,unisex
+Insulated sneakers,footwear,-5,15,Grey,TRUE,unisex
+Trail shoes,footwear,0,20,Green,TRUE,unisex
+Platform boots,footwear,0,15,Black,TRUE,female
+Flat boots,footwear,-5,20,Brown,TRUE,female
+Walking shoes,footwear,5,25,Grey,TRUE,unisex
+Slip-on shoes,footwear,10,25,Navy,FALSE,unisex
+Long-sleeve Henley,top,-10,20,Grey,TRUE,male
+Flannel shirt,top,-10,15,Red,TRUE,male
+Oxford shirt,top,0,25,White,TRUE,male
+Polo shirt,top,5,30,Navy,TRUE,male
+Thermal long-sleeve,top,-20,5,Black,TRUE,male
+Crewneck sweater,top,-15,10,Charcoal,TRUE,male
+Cable-knit sweater,top,-20,10,Cream,TRUE,male
+Half-zip sweater,top,-10,15,Green,TRUE,male
+Pullover hoodie,top,-15,10,Dark Blue,TRUE,male
+Graphic sweatshirt,top,-10,15,Black,TRUE,male
+Bomber jacket,jacket,-5,15,Olive,TRUE,male
+Varsity jacket,jacket,-5,15,Navy,TRUE,male
+Peacoat,jacket,-20,10,Black,TRUE,male
+Field jacket,jacket,-10,15,Brown,TRUE,male
+Down jacket,jacket,-25,5,Grey,TRUE,male
+Straight-fit jeans,bottom,-10,30,Dark Blue,TRUE,male
+Slim-fit jeans,bottom,-10,30,Black,TRUE,male
+Tapered trousers,bottom,0,25,Grey,TRUE,male
+Wool pants,bottom,-15,10,Charcoal,TRUE,male
+Cargo joggers,bottom,-10,20,Olive,TRUE,male
+Tech pants,bottom,-5,25,Black,TRUE,male
+Corduroy trousers,bottom,-10,20,Brown,TRUE,male
+Thermal joggers,bottom,-20,5,Grey,TRUE,male
+Chino shorts,bottom,15,30,Khaki,TRUE,male
+Denim shorts,bottom,15,30,Blue,TRUE,male
+Beanie cap,headwear,-25,5,Black,TRUE,male
+Flat cap,headwear,-10,15,Grey,TRUE,male
+Baseball cap,headwear,5,30,Navy,FALSE,male
+Wool scarf,headwear,-20,10,Grey,TRUE,male
+Leather gloves,headwear,-20,10,Brown,TRUE,male
+Chelsea boots,footwear,-5,15,Black,TRUE,male
+Work boots,footwear,-20,10,Brown,TRUE,male
+Desert boots,footwear,5,20,Sand,TRUE,male
+Dress shoes,footwear,5,25,Black,FALSE,male
+Sneakers (dark),footwear,5,30,Black,FALSE,male
+Trail boots,footwear,-10,15,Green,TRUE,male
+High-top sneakers,footwear,0,20,White,TRUE,male

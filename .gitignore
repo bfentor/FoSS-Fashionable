@@ -6,3 +6,6 @@ images backup
 convertcsv.py
 fashionista.py
 db_backup.csv
+test.py
+backup/
+getimages.py

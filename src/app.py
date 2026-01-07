@@ -179,7 +179,7 @@ def main():
             temp_string = "temp_f" if format else "temp_c"
             temp = store['current'][temp_string]
             img = store['current']['condition']['icon']
-            
+
             text = store['current']['condition']['text']
 
             if img[len(img)-11:len(img)-9] == "day":
@@ -212,7 +212,14 @@ def main():
     )
     def set_fit(fdata, gender):
         if fdata:
-            return fdata[gender]["head"], fdata[gender]["shirt"], fdata[gender]["jacket"], fdata[gender]["pants"], fdata[gender]["shoes"] 
+            parts = {"head": "", "shirt": "", "jacket": "", "pants": "", "shoes": ""}
+
+            for i in parts.keys():
+                if fdata[gender][i]:
+                    parts[i] = fdata[gender][i]        
+
+            # return fdata[gender]["head"], fdata[gender]["shirt"], fdata[gender]["jacket"], fdata[gender]["pants"], fdata[gender]["shoes"] 
+            return parts["head"], parts["shirt"], parts["jacket"], parts["pants"], parts["shoes"] 
         
         return no_update
 
@@ -246,21 +253,21 @@ def main():
                 "Male": {
                     "head": mdata[mdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
                     "shirt": mdata[mdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": mdata[mdata["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "jacket": mdata[mdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
                     "pants": mdata[mdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
                     "shoes": mdata[mdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 },
                 "Female": {
                     "head": fdata[fdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
                     "shirt": fdata[fdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": fdata[fdata["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "jacket": fdata[fdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
                     "pants": fdata[fdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
                     "shoes": fdata[fdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 },
                 "Unisex": {
                     "head": data[data["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
                     "shirt": data[data["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": data[data["type"] == "jacket"].sample(n=1)["name"].squeeze(), 
+                    "jacket": data[data["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
                     "pants": data[data["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
                     "shoes": data[data["type"] == "footwear"].sample(n=1)["name"].squeeze(),
                 }

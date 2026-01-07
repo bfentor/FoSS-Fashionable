@@ -123,7 +123,7 @@ def main():
         dbc.Row([
             dbc.Col([
                 card,
-                dcc.Dropdown(["Unisex", "Female", "Male"], "Unisex", clearable=False, id="gender", placeholder="Gender", persistence=True, persistence_type="local"),
+                dcc.Dropdown(["Unisex", "Female", "Male"], "Unisex", clearable=False, id="gender", placeholder="Gender", persistence=True, persistence_type="local", searchable=False),
                 dbc.Row([
                     dbc.Col([
                         dbc.Button("Refresh Location", id="location-perm-btn")

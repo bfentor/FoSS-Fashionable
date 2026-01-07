@@ -43,7 +43,7 @@ Tights,bottom,-20,20,Black,TRUE,female
 Stockings,bottom,-20,30,Brown,TRUE,female
 Poncho,top,10,30,Orange,TRUE,unisex
 Scarf,top,-20,20,Red,TRUE,unisex
-Beanie,bottom,-20,10,Brown,TRUE,unisex
+Beanie,headwear,-20,10,Brown,TRUE,unisex
 Hat,headwear,-20,30,Beige,TRUE,unisex
 Waistcoat,top,-20,20,Blue,TRUE,unisex
 Kimono,top,10,30,Pink,TRUE,unisex
@@ -90,7 +90,6 @@ Padded trousers,bottom,-20,5,Navy,TRUE,unisex
 Thermal pants,bottom,-25,0,Grey,TRUE,unisex
 Chinos,bottom,0,25,Khaki,TRUE,unisex
 High-waisted pants,bottom,0,30,Black,TRUE,female
-Beanie hat,headwear,-25,5,Grey,TRUE,unisex
 Wool hat,headwear,-20,10,Black,TRUE,unisex
 Bucket hat,headwear,0,20,Beige,TRUE,unisex
 Ear muffs,headwear,-20,5,White,TRUE,unisex
@@ -130,7 +129,6 @@ Corduroy trousers,bottom,-10,20,Brown,TRUE,male
 Thermal joggers,bottom,-20,5,Grey,TRUE,male
 Chino shorts,bottom,15,30,Khaki,TRUE,male
 Denim shorts,bottom,15,30,Blue,TRUE,male
-Beanie cap,headwear,-25,5,Black,TRUE,male
 Flat cap,headwear,-10,15,Grey,TRUE,male
 Baseball cap,headwear,5,30,Navy,FALSE,male
 Wool scarf,headwear,-20,10,Grey,TRUE,male

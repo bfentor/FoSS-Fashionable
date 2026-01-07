@@ -182,8 +182,10 @@ def main():
             
             text = store['current']['condition']['text']
 
-            path = f"/assets/images/weather/{img[len(img)-11:]}"
-            # print(f"PATH: {path}")
+            if img[len(img)-11:len(img)-9] == "day":
+                path = f"/assets/images/weather/{img[len(img)-11:]}"
+            else:
+                path = f"/assets/images/weather/{img[len(img)-13:]}"
             
             rain = store['forecast']["forecastday"][0]["day"]["daily_chance_of_rain"]
             snow = store['forecast']["forecastday"][0]["day"]["daily_chance_of_snow"]

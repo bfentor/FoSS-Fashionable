@@ -9,6 +9,7 @@ from weatherapi.rest import ApiException
 from src.fashionista import get_callback
 import pandas as pd
 import requests
+import traceback
 
 load_dotenv()
 
@@ -69,7 +70,7 @@ def main():
                         dbc.CardImg(src="/assets/images/head.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("", id="head"),
+                        html.H5("", id="headwear"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -91,7 +92,7 @@ def main():
                         dbc.CardImg(src="/assets/images/shirt.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("", id="shirt"),
+                        html.H5("", id="top"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -102,7 +103,7 @@ def main():
                         dbc.CardImg(src="/assets/images/pants.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("", id="pants"),
+                        html.H5("", id="bottom"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -113,7 +114,7 @@ def main():
                         dbc.CardImg(src="/assets/images/shoes.png", className="clothes-image"),
                     ]),
                     dbc.Col([
-                        html.H5("", id="shoes"),
+                        html.H5("", id="footwear"),
                     ]),
                 ])
             ], className="card-clothes")
@@ -211,25 +212,25 @@ def main():
         return no_update, no_update, no_update, no_update, no_update
 
     @callback(
-        Output("head", "children"),
-        Output("shirt", "children"),
+        Output("headwear", "children"),
+        Output("top", "children"),
         Output("jacket", "children"),
-        Output("pants", "children"),
-        Output("shoes", "children"),
+        Output("bottom", "children"),
+        Output("footwear", "children"),
         Input("fit-store", "data"),
         Input("gender", "value"),
         prevent_initial_call=True
     )
     def set_fit(fdata, gender):
         if fdata:
-            parts = {"head": "", "shirt": "", "jacket": "", "pants": "", "shoes": ""}
+            parts = {"headwear": "", "top": "", "jacket": "", "bottom": "", "footwear": ""}
 
             for i in parts.keys():
                 if fdata[gender][i]:
                     parts[i] = fdata[gender][i]        
 
             # return fdata[gender]["head"], fdata[gender]["shirt"], fdata[gender]["jacket"], fdata[gender]["pants"], fdata[gender]["shoes"] 
-            return parts["head"], parts["shirt"], parts["jacket"], parts["pants"], parts["shoes"] 
+            return parts["headwear"], parts["top"], parts["jacket"], parts["bottom"], parts["footwear"] 
         
         return no_update
 
@@ -259,30 +260,49 @@ def main():
             mdata = data[(data["gender"] == "male") | (data["gender"] == "unisex")]
             fdata = data[(data["gender"] == "female") | (data["gender"] == "unisex")]
             
+            tables = {"Male": mdata, "Female": fdata, "Unisex": data}
+
+            genders = ["Male", "Female", "Unisex"]
+            types = ["headwear", "top", "jacket", "bottom", "footwear"]
+
+            rdict = {"Male": {}, "Female": {}, "Unisex": {}}
+
+            for i in genders:
+                for k in types:
+                    try:
+                        rdict[i][k] = tables[i][tables[i]["type"] == k].sample(n=1)["name"].squeeze()
+                    except Exception as e:
+                        print(traceback.format_exc())
+                        rdict[i][k] = ""
+
+            return rdict
+        
+            # Leaving this here as a cautionary tale
+
             # There is definetly a nice way to generalize this but I haven't the time for such niceties at the moment
-            return {
-                "Male": {
-                    "head": mdata[mdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
-                    "shirt": mdata[mdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": mdata[mdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
-                    "pants": mdata[mdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
-                    "shoes": mdata[mdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
-                },
-                "Female": {
-                    "head": fdata[fdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
-                    "shirt": fdata[fdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": fdata[fdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
-                    "pants": fdata[fdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
-                    "shoes": fdata[fdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
-                },
-                "Unisex": {
-                    "head": data[data["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
-                    "shirt": data[data["type"] == "top"].sample(n=1)["name"].squeeze(), 
-                    "jacket": data[data["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
-                    "pants": data[data["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
-                    "shoes": data[data["type"] == "footwear"].sample(n=1)["name"].squeeze(),
-                }
-            }
+            # return {
+            #     "Male": {
+            #         "head": mdata[mdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+            #         "shirt": mdata[mdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
+            #         "jacket": mdata[mdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
+            #         "pants": mdata[mdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+            #         "shoes": mdata[mdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
+            #     },
+            #     "Female": {
+            #         "head": fdata[fdata["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+            #         "shirt": fdata[fdata["type"] == "top"].sample(n=1)["name"].squeeze(), 
+            #         "jacket": fdata[fdata["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
+            #         "pants": fdata[fdata["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+            #         "shoes": fdata[fdata["type"] == "footwear"].sample(n=1)["name"].squeeze(),
+            #     },
+            #     "Unisex": {
+            #         "head": data[data["type"] == "headwear"].sample(n=1)["name"].squeeze(), 
+            #         "shirt": data[data["type"] == "top"].sample(n=1)["name"].squeeze(), 
+            #         "jacket": data[data["type"] == "jacket"].sample(n=1)["name"].squeeze() if temp < 15 else "", 
+            #         "pants": data[data["type"] == "bottom"].sample(n=1)["name"].squeeze(), 
+            #         "shoes": data[data["type"] == "footwear"].sample(n=1)["name"].squeeze(),
+            #     }
+            # }
                     
         return no_update
     

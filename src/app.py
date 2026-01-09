@@ -8,9 +8,7 @@ import weatherapi
 from weatherapi.rest import ApiException
 from src.fashionista import get_callback
 import pandas as pd
-# import requests
-# from PIL import Image
-# from dash_dynamic_images import image_callback
+import requests
 
 load_dotenv()
 
@@ -18,6 +16,11 @@ configuration = weatherapi.Configuration()
 configuration.api_key['key'] = os.getenv('WEATHERAPI_KEY')
 
 api_instance = weatherapi.APIsApi(weatherapi.ApiClient(configuration))
+
+def download_image(url, save_as):
+    response = requests.get(url)
+    with open(save_as, 'wb') as file:
+        file.write(response.content)
 
 def main():
     app = Dash(__name__, use_pages=False, external_stylesheets=[dbc.themes.MINTY, dbc.icons.BOOTSTRAP])
@@ -144,13 +147,14 @@ def main():
         dcc.Store(id="fit-store", storage_type="session", data="dict"),
     ])
 
-    @callback(Output("geolocation", "update_now"), Input("location-perm-btn", "n_clicks"))
+    @callback(Output("geolocation", "update_now"), Input("location-perm-btn", "n_clicks"), prevent_initial_callback=True)
     def update_now(click):
         return True if click and click > 0 else False
 
     @callback(
         Output("weatherapi-data", "data"),
         Input("geolocation", "position"),
+        prevent_initial_callback=True
     )
     def populate_data(pos):
         if pos:
@@ -182,10 +186,17 @@ def main():
             text = store['current']['condition']['text']
 
             imgpath = f"/assets/images/weather/{imgp[len(imgp)-2]}/{imgp[len(imgp)-1]}"
+            split = img[2:].split("/")
+            split[split.index("64x64")] = "128x128"
+            getimgurl = f"https://{"/".join(split)}"
 
             if not os.path.isfile("src" + imgpath):
-                imgpath = f"/assets/images/weather/day/119.png"
-
+                try:
+                    download_image(getimgurl, "src" + imgpath)    
+                except:
+                    print("New image download failed")
+                print(f"Downloaded new image: {getimgurl} | {"src" + imgpath}")
+            
             rain = store['forecast']["forecastday"][0]["day"]["daily_chance_of_rain"]
             snow = store['forecast']["forecastday"][0]["day"]["daily_chance_of_snow"]
             chance = ""
@@ -227,7 +238,8 @@ def main():
     @callback(
         Output("fit-store", "data"),
         Input("weatherapi-data", "data"),
-        Input("outfit-refresh-btn", "n_clicks")
+        Input("outfit-refresh-btn", "n_clicks"),
+        prevent_initial_callback=True,
     )
     def get_fit(wdata, n_clicks):
         if wdata:

@@ -104,6 +104,15 @@ html {
     /* text-align: center; */
 }
 
+.logo-container {
+    display: flex;
+    justify-content: center;
+}
+
+#weatherapi-logo {
+    max-width: 200px;
+}
+
 /* #location {
     text-align: center;
 } */

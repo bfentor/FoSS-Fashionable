@@ -1,6 +1,6 @@
 import dash_bootstrap_components as dbc
 import dash_daq as daq
-from dash import Dash, html, dcc, callback, page_container, no_update
+from dash import Dash, html, dcc, callback, page_container, no_update, get_asset_url
 from dash.dependencies import Input, Output, State
 from dotenv import load_dotenv
 import os
@@ -24,8 +24,10 @@ def download_image(url, save_as):
         file.write(response.content)
 
 def main():
-    app = Dash(__name__, use_pages=False, external_stylesheets=[dbc.themes.MINTY, dbc.icons.BOOTSTRAP])
+    app = Dash(__name__, meta_tags=[{'name': 'viewport', 'content': 'width=device-width, initial-scale=1.0'}]
+, use_pages=False, external_stylesheets=[dbc.themes.MINTY, dbc.icons.BOOTSTRAP])
     app.title = "Fashionable"
+    
 
     navbar = dbc.NavbarSimple(
         children=[
@@ -119,6 +121,7 @@ def main():
                 ])
             ], className="card-clothes")
 
+    weatherapiLogo = html.Img(src=get_asset_url('images/weatherapi_logo.png'), id="weatherapi-logo")
 
     app.layout = html.Div([
         navbar,
@@ -134,7 +137,7 @@ def main():
                         dbc.Button("Refresh Outfit", id="outfit-refresh-btn")
                     ], className="button-row")
                 ], className="button-row")
-        ]),
+            ]),
             dbc.Col([
                 dbc.Row([cardHead], className="fit-row"),
                 dbc.Row([cardShirt], className="fit-row"),
@@ -142,6 +145,7 @@ def main():
                 dbc.Row([cardPants], className="fit-row"),
                 dbc.Row([cardShoes], className="fit-row"),
             ]),
+            dbc.Row([weatherapiLogo], className="logo-container")
         ]),
         dcc.Geolocation(id="geolocation"),
         dcc.Store(id="weatherapi-data", storage_type="session", data="dict"),

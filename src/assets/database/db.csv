@@ -24,7 +24,7 @@ Sweatpants,bottom,-10,20,Blue,TRUE,unisex
 Shorts,bottom,10,30,Orange,TRUE,male
 Bermuda shorts,bottom,10,30,Blue,TRUE,male
 Mini skirt,bottom,0,30,Brown,TRUE,female
-Thermal tights,bottom,-20,0,Brown,TRUE,female
+Thermal tights,bottom,-40,0,Brown,TRUE,female
 Midi skirt,bottom,0,30,Orange,TRUE,female
 Maxi skirt,bottom,0,30,Red,TRUE,female
 Dress,top,-20,30,White,TRUE,female
@@ -58,13 +58,13 @@ Leather Boots,footwear,-10,15,Black,TRUE,male
 Ballet Flats,footwear,10,25,Pink,FALSE,female
 Sandals,footwear,18,40,Tan,FALSE,female
 Running Shoes,footwear,5,25,Blue,TRUE,male
-Winter Boots,footwear,-30,0,Dark Brown,TRUE,unisex
+Winter Boots,footwear,-40,0,Dark Brown,TRUE,unisex
 Rain Boots,footwear,0,20,Yellow,TRUE,unisex
 High Heels,footwear,15,30,Red,FALSE,female
 Hiking Boots,footwear,-5,20,Green,TRUE,male
 Loafers,footwear,10,25,Brown,FALSE,unisex
 Long-sleeve T-shirt,top,-5,20,Grey,TRUE,unisex
-Thermal shirt,top,-20,5,White,TRUE,unisex
+Thermal shirt,top,-40,5,White,TRUE,unisex
 Wool sweater,top,-20,10,Cream,TRUE,unisex
 Knit sweater,top,-10,15,Green,TRUE,unisex
 Oversized hoodie,top,-15,10,Grey,TRUE,unisex
@@ -87,7 +87,7 @@ Pleated skirt,bottom,0,25,Grey,TRUE,female
 Wool skirt,bottom,-10,15,Brown,TRUE,female
 A-line skirt,bottom,0,30,Beige,TRUE,female
 Padded trousers,bottom,-20,5,Navy,TRUE,unisex
-Thermal pants,bottom,-25,0,Grey,TRUE,unisex
+Thermal pants,bottom,-40,0,Grey,TRUE,unisex
 Chinos,bottom,0,25,Khaki,TRUE,unisex
 High-waisted pants,bottom,0,30,Black,TRUE,female
 Wool hat,headwear,-20,10,Black,TRUE,unisex
@@ -108,7 +108,7 @@ Long-sleeve Henley,top,-10,20,Grey,TRUE,male
 Flannel shirt,top,-10,15,Red,TRUE,male
 Oxford shirt,top,0,25,White,TRUE,male
 Polo shirt,top,5,30,Navy,TRUE,male
-Thermal long-sleeve,top,-20,5,Black,TRUE,male
+Thermal long-sleeve,top,-40,5,Black,TRUE,male
 Crewneck sweater,top,-15,10,Charcoal,TRUE,male
 Cable-knit sweater,top,-20,10,Cream,TRUE,male
 Half-zip sweater,top,-10,15,Green,TRUE,male
@@ -126,13 +126,12 @@ Wool pants,bottom,-15,10,Charcoal,TRUE,male
 Cargo joggers,bottom,-10,20,Olive,TRUE,male
 Tech pants,bottom,-5,25,Black,TRUE,male
 Corduroy trousers,bottom,-10,20,Brown,TRUE,male
-Thermal joggers,bottom,-20,5,Grey,TRUE,male
+Thermal joggers,bottom,-40,5,Grey,TRUE,unisex
 Chino shorts,bottom,15,30,Khaki,TRUE,male
 Denim shorts,bottom,15,30,Blue,TRUE,male
 Flat cap,headwear,-10,15,Grey,TRUE,male
 Baseball cap,headwear,5,30,Navy,FALSE,male
 Wool scarf,headwear,-20,10,Grey,TRUE,male
-Leather gloves,headwear,-20,10,Brown,TRUE,male
 Chelsea boots,footwear,-5,15,Black,TRUE,male
 Work boots,footwear,-20,10,Brown,TRUE,male
 Desert boots,footwear,5,20,Sand,TRUE,male

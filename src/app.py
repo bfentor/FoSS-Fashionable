@@ -232,7 +232,7 @@ def main():
     )
     def get_fit(wdata, n_clicks):
         if wdata:
-            temp = wdata["current"]["feelslike_c"]
+            temp = wdata["current"]["temp_c"]
             rain = wdata['forecast']["forecastday"][0]["day"]["daily_will_it_rain"]
             snow = wdata['forecast']["forecastday"][0]["day"]["daily_will_it_snow"]
 
@@ -245,8 +245,12 @@ def main():
             
             data = data[(data["max"] > temp) & (data["min"] < temp)]
 
+            print(f"TEMP1234: {temp}")
+
             mdata = data[(data["gender"] == "male") | (data["gender"] == "unisex")]
             fdata = data[(data["gender"] == "female") | (data["gender"] == "unisex")]
+
+            print(mdata)
             
             # There is definetly a nice way to generalize this but I haven't the time for such niceties at the moment
             return {

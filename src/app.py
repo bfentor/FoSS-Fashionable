@@ -25,8 +25,6 @@ def main():
 
     navbar = dbc.NavbarSimple(
         children=[
-            # dbc.NavItem(dbc.NavLink("Settings", href="/settings")),
-            # dbc.NavItem(dbc.NavLink("About", href="/about")),
         ],
         brand="Fashionable",
         # brand_href="#",
@@ -173,20 +171,21 @@ def main():
     )
     def display_data(format, store):
         if store:
-            # print(store)
             town = store['location']['name']
             country = store['location']['country']
             temp_string = "temp_f" if format else "temp_c"
             temp = store['current'][temp_string]
             img = store['current']['condition']['icon']
 
+            imgp = img.split("/")
+
             text = store['current']['condition']['text']
 
-            if img[len(img)-11:len(img)-9] == "day":
-                path = f"/assets/images/weather/{img[len(img)-11:]}"
-            else:
-                path = f"/assets/images/weather/{img[len(img)-13:]}"
-            
+            imgpath = f"/assets/images/weather/{imgp[len(imgp)-2]}/{imgp[len(imgp)-1]}"
+
+            if not os.path.isfile("src" + imgpath):
+                imgpath = f"/assets/images/weather/day/119.png"
+
             rain = store['forecast']["forecastday"][0]["day"]["daily_chance_of_rain"]
             snow = store['forecast']["forecastday"][0]["day"]["daily_chance_of_snow"]
             chance = ""
@@ -196,7 +195,7 @@ def main():
                 else:
                     chance = f"Chance of snow: {snow}%"
 
-            return f"{town}, {country}", f"{round(temp)}°", chance, path, text
+            return f"{town}, {country}", f"{round(temp)}°", chance, imgpath, text
             
         return no_update, no_update, no_update, no_update, no_update
 
@@ -245,12 +244,8 @@ def main():
             
             data = data[(data["max"] > temp) & (data["min"] < temp)]
 
-            print(f"TEMP1234: {temp}")
-
             mdata = data[(data["gender"] == "male") | (data["gender"] == "unisex")]
             fdata = data[(data["gender"] == "female") | (data["gender"] == "unisex")]
-
-            print(mdata)
             
             # There is definetly a nice way to generalize this but I haven't the time for such niceties at the moment
             return {

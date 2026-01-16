@@ -2,6 +2,8 @@ html {
     width: 800px;
     margin: auto;
     padding: 20px;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 .subtitle {
@@ -125,7 +127,7 @@ html {
     visibility: hidden;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
     html {
         width: 400px;
     }

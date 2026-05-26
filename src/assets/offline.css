@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#offline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#offline h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 6vh;
+    text-align: center;
+    background-color: #56cc9d;
+    color: white;
+    padding: 2vw;
+}

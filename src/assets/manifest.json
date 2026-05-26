@@ -1,0 +1,59 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Fashionable",
+  "orientation": "any",
+  "scope": "https://fashionable.fentorweb.hu/assets",
+  "short_name": "Fashionable",
+  "start_url": "https://fashionable.fentorweb.hu",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "pwa-images/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa-images/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "pwa-images/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "pwa-images/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+    
+  ],
+  "screenshots" : [
+    {
+      "src": "src/assets/pwa-images/screenshot-1280x720.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "src/assets/pwa-images/screenshot-720x1280.png",
+      "sizes": "720x1280",
+      "type": "image/png"
+    }
+  ],
+  "id": "Fashionable",
+  "description": "Your one-stop-shop for weather-based clothing",
+  "lang": "en",
+  "categories": [
+    "lifestyle",
+    "personalization",
+    "weather"
+  ]
+}

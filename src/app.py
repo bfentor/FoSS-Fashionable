@@ -32,7 +32,7 @@ def main():
 <html>
 <head>
 <title>My app title</title>
-<link rel="manifest" href="./assets/manifest.json" />
+<link rel="manifest" href="assets/manifest.json" />
 {%metas%}
 {%favicon%}
 {%css%}
@@ -48,7 +48,7 @@ def main():
     window.addEventListener('load', ()=> {
       navigator
       .serviceWorker
-      .register('./assets/sw01.js')
+      .register('assets/sw01.js')
       .then(()=>console.log("Ready."))
       .catch(()=>console.log("Err..."));
     });
